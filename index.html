@@ -4,202 +4,315 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>馬爾地夫海外工作與諮詢意向調查</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0284c7;
-            --primary-hover: #0369a1;
-            --bg-color: #f0f9ff;
-            --card-bg: #ffffff;
-            --text-color: #334155;
+            --ink: #17353a;          /* 潟湖深綠：主色、按鈕 */
+            --ink-soft: #234b52;
+            --brass: #a8896a;        /* 黃銅：細節與焦點 */
+            --stone: #eef0ee;        /* 頁面底色 */
+            --paper: #ffffff;
+            --text: #2b3335;
+            --muted: #7b868a;
+            --line: #d9dedd;
+            --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+            --sans: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
         }
+
+        * { box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: var(--bg-color);
-            color: var(--text-color);
             margin: 0;
-            padding: 20px;
+            padding: 48px 20px;
+            background: var(--stone);
+            color: var(--text);
+            font-family: var(--sans);
+            font-weight: 300;
+            line-height: 1.7;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
+
         .container {
-            background: var(--card-bg);
             width: 100%;
-            max-width: 650px;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            max-width: 620px;
+            background: var(--paper);
+            padding: 72px 64px 64px;
+            border-top: 3px solid var(--ink);
+        }
+
+        /* 標題區 */
+        .header {
+            text-align: center;
+            padding-bottom: 36px;
+            margin-bottom: 44px;
+            border-bottom: 1px solid var(--line);
         }
         h2 {
-            text-align: center;
-            color: #0f172a;
-            margin-bottom: 8px;
+            margin: 0 0 14px;
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: 28px;
+            line-height: 1.4;
+            letter-spacing: 0.12em;
+            color: var(--ink);
         }
         .subtitle {
-            text-align: center;
-            color: #64748b;
+            margin: 0;
             font-size: 14px;
-            margin-bottom: 30px;
+            letter-spacing: 0.14em;
+            color: var(--muted);
         }
-        .form-group {
-            margin-bottom: 20px;
+
+        /* 區塊標題 */
+        fieldset {
+            border: 0;
+            padding: 0;
+            margin: 0 0 44px;
         }
+        legend {
+            padding: 0;
+            margin-bottom: 28px;
+            font-family: var(--serif);
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--brass);
+        }
+
+        .form-group { margin-bottom: 30px; }
+
         label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
+            margin-bottom: 6px;
             font-size: 14px;
-            color: #1e293b;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            color: var(--text);
         }
-        input[type="text"], input[type="email"], select, textarea {
+
+        /* 底線式輸入欄位 */
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 14px;
+            padding: 10px 2px;
+            font-family: var(--sans);
+            font-size: 15px;
+            font-weight: 300;
+            color: var(--ink);
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid var(--line);
+            border-radius: 0;
+            appearance: none;
+            -webkit-appearance: none;
             transition: border-color 0.2s;
+        }
+        input::placeholder,
+        textarea::placeholder {
+            color: #b3bbbd;
+            font-weight: 300;
+        }
+        input:hover, select:hover, textarea:hover {
+            border-bottom-color: var(--muted);
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+            border-bottom-color: var(--brass);
+            box-shadow: 0 1px 0 0 var(--brass);
         }
+
+        select {
+            padding-right: 28px;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23a8896a' stroke-width='1.3'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+        }
+        select:invalid { color: #b3bbbd; }
+        select option { color: var(--text); }
+
         textarea {
             resize: vertical;
-            height: 90px;
+            height: 100px;
+            line-height: 1.7;
+            border: 1px solid var(--line);
+            padding: 12px 14px;
+            margin-top: 6px;
         }
+        textarea:focus {
+            border-color: var(--brass);
+            box-shadow: none;
+        }
+
+        /* 送出按鈕 */
         button {
             width: 100%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
+            margin-top: 12px;
+            padding: 17px;
+            font-family: var(--sans);
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-indent: 0.3em;
+            color: #fff;
+            background: var(--ink);
+            border: 0;
+            border-radius: 0;
             cursor: pointer;
-            transition: background 0.2s;
-            margin-top: 10px;
+            transition: background 0.25s;
         }
-        button:hover {
-            background: var(--primary-hover);
+        button:hover { background: var(--ink-soft); }
+        button:focus-visible {
+            outline: 2px solid var(--brass);
+            outline-offset: 3px;
         }
         button:disabled {
-            background: #94a3b8;
+            background: #9aa7a9;
             cursor: not-allowed;
+        }
+
+        /* 手機版 */
+        @media (max-width: 560px) {
+            body { padding: 0; }
+            .container {
+                padding: 48px 24px 40px;
+                border-top-width: 3px;
+            }
+            h2 { font-size: 23px; letter-spacing: 0.08em; }
+            .subtitle { letter-spacing: 0.08em; }
+            input[type="text"], input[type="email"], select, textarea {
+                font-size: 16px; /* 避免 iOS 自動放大 */
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>🏝️ 馬爾地夫工作與諮詢意向調查</h2>
-    <div class="subtitle">錢錢來了！開啟你的海島職涯第一步</div>
+    <div class="header">
+        <h2>馬爾地夫工作與諮詢意向調查</h2>
+        <p class="subtitle">錢錢來了！開啟你的海島職涯第一步</p>
+    </div>
 
     <form id="maldivesForm">
+
         <!-- 基本資料 -->
-        <div class="form-group">
-            <label>您的姓名 *</label>
-            <input type="text" id="name" required placeholder="例如：王小明">
-        </div>
-        <div class="form-group">
-            <label>電子郵件信箱 *</label>
-            <input type="email" id="email" required placeholder="your.email@example.com">
-        </div>
-        <div class="form-group">
-            <label>聯繫方式（Line / IG 或其他）</label>
-            <input type="text" id="contact" placeholder="例如：IG: cyz_mzm0422">
-        </div>
+        <fieldset>
+            <legend>基本資料</legend>
+            <div class="form-group">
+                <label for="name">您的姓名 *</label>
+                <input type="text" id="name" required placeholder="例如：王小明">
+            </div>
+            <div class="form-group">
+                <label for="email">電子郵件信箱 *</label>
+                <input type="email" id="email" required placeholder="your.email@example.com">
+            </div>
+            <div class="form-group">
+                <label for="contact">聯繫方式（Line / IG 或其他）</label>
+                <input type="text" id="contact" placeholder="例如：IG: cyz_mzm0422">
+            </div>
+        </fieldset>
 
-        <!-- 題目 1 -->
-        <div class="form-group">
-            <label>1. 您認為自己哪些技能最適合馬爾地夫工作？ *</label>
-            <select id="skill1" required>
-                <option value="">請選擇...</option>
-                <option value="問題解決能力">問題解決能力</option>
-                <option value="客戶服務經驗, 團隊合作, 問題解決能力">客戶服務經驗、團隊合作與問題解決能力</option>
-            </select>
-        </div>
+        <!-- 技能與動機 -->
+        <fieldset>
+            <legend>技能與動機</legend>
+            <div class="form-group">
+                <label for="skill1">1. 您認為自己哪些技能最適合馬爾地夫工作？ *</label>
+                <select id="skill1" required>
+                    <option value="">請選擇...</option>
+                    <option value="問題解決能力">問題解決能力</option>
+                    <option value="客戶服務經驗, 團隊合作, 問題解決能力">客戶服務經驗、團隊合作與問題解決能力</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="skill2">2. 您目前缺乏但認為重要的技能是什麼？ *</label>
+                <select id="skill2" required>
+                    <option value="">請選擇...</option>
+                    <option value="英文溝通能力">英文溝通能力</option>
+                    <option value="服務業專業知識">服務業專業知識</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="meaning">3. 馬爾地夫工作對您的意義是什麼？ *</label>
+                <select id="meaning" required>
+                    <option value="">請選擇...</option>
+                    <option value="語言與國際視野提升">語言與國際視野提升</option>
+                    <option value="累積海外工作經驗">累積海外工作經驗</option>
+                </select>
+            </div>
+        </fieldset>
 
-        <!-- 題目 2 -->
-        <div class="form-group">
-            <label>2. 您目前缺乏但認為重要的技能是什麼？ *</label>
-            <select id="skill2" required>
-                <option value="">請選擇...</option>
-                <option value="英文溝通能力">英文溝通能力</option>
-                <option value="服務業專業知識">服務業專業知識</option>
-            </select>
-        </div>
+        <!-- 諮詢方向 -->
+        <fieldset>
+            <legend>諮詢方向</legend>
+            <div class="form-group">
+                <label for="consult">4. 這次的諮詢希望了解哪些方面？ *</label>
+                <select id="consult" required>
+                    <option value="">請選擇...</option>
+                    <option value="假工作機會騙錢">防範假工作機會與詐騙</option>
+                    <option value="馬爾地夫工作面試技巧, 馬爾地夫的選島技巧">馬爾地夫工作面試技巧與選島技巧</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="position">5. 對於馬爾地夫的工作，你已經有興趣的職位嗎？ *</label>
+                <select id="position" required>
+                    <option value="">請選擇...</option>
+                    <option value="網路求職平台">尋找網路求職平台機會</option>
+                    <option value="私人管家">私人管家 (Guest Relations / Butler)</option>
+                </select>
+            </div>
+        </fieldset>
 
-        <!-- 題目 3 -->
-        <div class="form-group">
-            <label>3. 馬爾地夫工作對您的意義是什麼？ *</label>
-            <select id="meaning" required>
-                <option value="">請選擇...</option>
-                <option value="語言與國際視野提升">語言與國際視野提升</option>
-                <option value="累積海外工作經驗">累積海外工作經驗</option>
-            </select>
-        </div>
+        <!-- 行動與心態 -->
+        <fieldset>
+            <legend>行動與心態</legend>
+            <div class="form-group">
+                <label for="opportunity">6. 如果現在有合適的工作機會，您會？ *</label>
+                <select id="opportunity" required>
+                    <option value="">請選擇...</option>
+                    <option value="立刻接受，機票買了就出發">立刻接受，機票買了就出發！</option>
+                    <option value="需要1個月準備，離職或是跟家庭溝通">需要 1 個月準備（離職或與家人溝通）</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="frustration">7. 如果遇到挫折，您會怎麼面對？ *</label>
+                <select id="frustration" required>
+                    <option value="">請選擇...</option>
+                    <option value="評估情況再決定">冷靜評估情況再決定</option>
+                    <option value="尋求協助後繼續努力">尋求協助後繼續努力</option>
+                </select>
+            </div>
+        </fieldset>
 
-        <!-- 題目 4 -->
-        <div class="form-group">
-            <label>4. 這次的諮詢希望了解哪些方面？ *</label>
-            <select id="consult" required>
-                <option value="">請選擇...</option>
-                <option value="假工作機會騙錢">防範假工作機會與詐騙</option>
-                <option value="馬爾地夫工作面試技巧, 馬爾地夫的選島技巧">馬爾地夫工作面試技巧與選島技巧</option>
-            </select>
-        </div>
+        <!-- 留言 -->
+        <fieldset>
+            <legend>想對我說的話</legend>
+            <div class="form-group">
+                <label for="message">8. 還有什麼想告訴我的嗎？任何疑問、期待或想法都可以分享：</label>
+                <textarea id="message" placeholder="寫下你的疑問或期待..."></textarea>
+            </div>
+        </fieldset>
 
-        <!-- 題目 5 -->
-        <div class="form-group">
-            <label>5.對於馬爾地夫的工作，你已經有興趣的職位嗎？ *</label>
-            <select id="position" required>
-                <option value="">請選擇...</option>
-                <option value="網路求職平台">尋找網路求職平台機會</option>
-                <option value="私人管家">私人管家 (Guest Relations / Butler)</option>
-            </select>
-        </div>
-
-        <!-- 題目 6 -->
-        <div class="form-group">
-            <label>6. 如果現在有合適的工作機會，您會？ *</label>
-            <select id="opportunity" required>
-                <option value="">請選擇...</option>
-                <option value="立刻接受，機票買了就出發">立刻接受，機票買了就出發！</option>
-                <option value="需要1個月準備，離職或是跟家庭溝通">需要 1 個月準備（離職或與家人溝通）</option>
-            </select>
-        </div>
-
-        <!-- 題目 7 -->
-        <div class="form-group">
-            <label>7. 如果遇到挫折，您會怎麼面對？ *</label>
-            <select id="frustration" required>
-                <option value="">請選擇...</option>
-                <option value="評估情況再決定">冷靜評估情況再決定</option>
-                <option value="尋求協助後繼續努力">尋求協助後繼續努力</option>
-            </select>
-        </div>
-
-        <!-- 題目 8 -->
-        <div class="form-group">
-            <label>8. 還有什麼想告訴我的嗎？任何疑問、期待或想法都可以分享：</label>
-            <textarea id="message" placeholder="寫下你的疑問或期待..."></textarea>
-        </div>
-
-        <button type="submit" id="submitBtn">提交表單，開啟海島職涯</button>
+        <button type="submit" id="submitBtn">提交表單</button>
     </form>
 </div>
 
 <script>
 // ⚠️ 請把步驟一取得的「網頁應用程式網址」貼在下方雙引號內
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzJo5_anAAwFUCkh94DBEQNuY1KvhzeLKvOqbga18lH96iwRvg5bsmbVYKRN8lpKNQP/exec";
+const SCRIPT_URL = "你的_APPS_SCRIPT_網址";
 
 document.getElementById('maldivesForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     const btn = document.getElementById('submitBtn');
     btn.textContent = '資料提交中...';
     btn.disabled = true;
@@ -226,14 +339,14 @@ document.getElementById('maldivesForm').addEventListener('submit', function(e) {
         },
         body: JSON.stringify(formData)
     }).then(() => {
-        alert('🎉 提交成功！感謝您的填寫，期待與您聊聊！');
+        alert('提交成功！感謝您的填寫，期待與您聊聊！');
         document.getElementById('maldivesForm').reset();
-        btn.textContent = '提交表單，開啟海島職涯';
+        btn.textContent = '提交表單';
         btn.disabled = false;
     }).catch(error => {
         console.error('Error!', error);
-        alert('❌ 發送失敗，請稍後再試或檢查網路連線。');
-        btn.textContent = '提交表單，開啟海島職涯';
+        alert('發送失敗，請稍後再試或檢查網路連線。');
+        btn.textContent = '提交表單';
         btn.disabled = false;
     });
 });
