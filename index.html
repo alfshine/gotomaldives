@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>馬爾地夫海外工作與諮詢意向調查</title>
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
+            --bg-color: #f0f9ff;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 650px;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #1e293b;
+        }
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
+        textarea {
+            resize: vertical;
+            height: 90px;
+        }
+        button {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: var(--primary-hover);
+        }
+        button:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🏝️ 馬爾地夫工作與諮詢意向調查</h2>
+    <div class="subtitle">錢錢來了！開啟你的海島職涯第一步</div>
+
+    <form id="maldivesForm">
+        <!-- 基本資料 -->
+        <div class="form-group">
+            <label>您的姓名 *</label>
+            <input type="text" id="name" required placeholder="例如：王小明">
+        </div>
+        <div class="form-group">
+            <label>電子郵件信箱 *</label>
+            <input type="email" id="email" required placeholder="your.email@example.com">
+        </div>
+        <div class="form-group">
+            <label>聯繫方式（Line / IG 或其他）</label>
+            <input type="text" id="contact" placeholder="例如：IG: cyz_mzm0422">
+        </div>
+
+        <!-- 題目 1 -->
+        <div class="form-group">
+            <label>1. 您認為自己哪些技能最適合馬爾地夫工作？ *</label>
+            <select id="skill1" required>
+                <option value="">請選擇...</option>
+                <option value="問題解決能力">問題解決能力</option>
+                <option value="客戶服務經驗, 團隊合作, 問題解決能力">客戶服務經驗、團隊合作與問題解決能力</option>
+            </select>
+        </div>
+
+        <!-- 題目 2 -->
+        <div class="form-group">
+            <label>2. 您目前缺乏但認為重要的技能是什麼？ *</label>
+            <select id="skill2" required>
+                <option value="">請選擇...</option>
+                <option value="英文溝通能力">英文溝通能力</option>
+                <option value="服務業專業知識">服務業專業知識</option>
+            </select>
+        </div>
+
+        <!-- 題目 3 -->
+        <div class="form-group">
+            <label>3. 馬爾地夫工作對您的意義是什麼？ *</label>
+            <select id="meaning" required>
+                <option value="">請選擇...</option>
+                <option value="語言與國際視野提升">語言與國際視野提升</option>
+                <option value="累積海外工作經驗">累積海外工作經驗</option>
+            </select>
+        </div>
+
+        <!-- 題目 4 -->
+        <div class="form-group">
+            <label>4. 這次的諮詢希望了解哪些方面？ *</label>
+            <select id="consult" required>
+                <option value="">請選擇...</option>
+                <option value="假工作機會騙錢">防範假工作機會與詐騙</option>
+                <option value="馬爾地夫工作面試技巧, 馬爾地夫的選島技巧">馬爾地夫工作面試技巧與選島技巧</option>
+            </select>
+        </div>
+
+        <!-- 題目 5 -->
+        <div class="form-group">
+            <label>5.對於馬爾地夫的工作，你已經有興趣的職位嗎？ *</label>
+            <select id="position" required>
+                <option value="">請選擇...</option>
+                <option value="網路求職平台">尋找網路求職平台機會</option>
+                <option value="私人管家">私人管家 (Guest Relations / Butler)</option>
+            </select>
+        </div>
+
+        <!-- 題目 6 -->
+        <div class="form-group">
+            <label>6. 如果現在有合適的工作機會，您會？ *</label>
+            <select id="opportunity" required>
+                <option value="">請選擇...</option>
+                <option value="立刻接受，機票買了就出發">立刻接受，機票買了就出發！</option>
+                <option value="需要1個月準備，離職或是跟家庭溝通">需要 1 個月準備（離職或與家人溝通）</option>
+            </select>
+        </div>
+
+        <!-- 題目 7 -->
+        <div class="form-group">
+            <label>7. 如果遇到挫折，您會怎麼面對？ *</label>
+            <select id="frustration" required>
+                <option value="">請選擇...</option>
+                <option value="評估情況再決定">冷靜評估情況再決定</option>
+                <option value="尋求協助後繼續努力">尋求協助後繼續努力</option>
+            </select>
+        </div>
+
+        <!-- 題目 8 -->
+        <div class="form-group">
+            <label>8. 還有什麼想告訴我的嗎？任何疑問、期待或想法都可以分享：</label>
+            <textarea id="message" placeholder="寫下你的疑問或期待..."></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn">提交表單，開啟海島職涯</button>
+    </form>
+</div>
+
+<script>
+// ⚠️ 請把步驟一取得的「網頁應用程式網址」貼在下方雙引號內
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzJo5_anAAwFUCkh94DBEQNuY1KvhzeLKvOqbga18lH96iwRvg5bsmbVYKRN8lpKNQP/exec";
+
+document.getElementById('maldivesForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = '資料提交中...';
+    btn.disabled = true;
+
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        contact: document.getElementById('contact').value,
+        skill1: document.getElementById('skill1').value,
+        skill2: document.getElementById('skill2').value,
+        meaning: document.getElementById('meaning').value,
+        consult: document.getElementById('consult').value,
+        position: document.getElementById('position').value,
+        opportunity: document.getElementById('opportunity').value,
+        frustration: document.getElementById('frustration').value,
+        message: document.getElementById('message').value
+    };
+
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    }).then(() => {
+        alert('🎉 提交成功！感謝您的填寫，期待與您聊聊！');
+        document.getElementById('maldivesForm').reset();
+        btn.textContent = '提交表單，開啟海島職涯';
+        btn.disabled = false;
+    }).catch(error => {
+        console.error('Error!', error);
+        alert('❌ 發送失敗，請稍後再試或檢查網路連線。');
+        btn.textContent = '提交表單，開啟海島職涯';
+        btn.disabled = false;
+    });
+});
+</script>
+
+</body>
+</html>
