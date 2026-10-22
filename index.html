@@ -229,6 +229,14 @@
             color: #a14a3a;
         }
 
+        .field-error {
+            display: none;
+            margin: 10px 0 0;
+            font-size: 14px;
+            color: #a14a3a;
+        }
+        .field-error.show { display: block; }
+
         /* 送出成功 */
         .done { display: none; text-align: center; padding: 72px 0 56px; }
         .done.show { display: block; }
@@ -255,6 +263,14 @@
             * { transition: none !important; }
         }
     </style>
+    <!-- Google Analytics 4：把兩處 G-XXXXXXXXXX 換成你的評估 ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 <body>
 
@@ -282,7 +298,7 @@
             </div>
             <div class="form-group">
                 <label class="q" for="email">聯絡信箱 *</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required autocomplete="email" pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" title="請輸入正確的信箱格式，例如：name@example.com">
             </div>
             <div class="form-group">
                 <label class="q" for="contact">聯繫方式（Line, IG或其他） *</label>
@@ -295,7 +311,7 @@
             <legend>技能與動機</legend>
 
             <div class="form-group">
-                <span class="q">1. 您認為自己哪些技能最適合馬爾地夫工作？</span>
+                <span class="q">1. 您認為自己哪些技能最適合馬爾地夫工作？ *</span>
                 <label class="option"><input type="checkbox" name="skills" value="客戶服務經驗">客戶服務經驗</label>
                 <label class="option"><input type="checkbox" name="skills" value="語言能力">語言能力</label>
                 <label class="option"><input type="checkbox" name="skills" value="團隊合作">團隊合作</label>
@@ -306,7 +322,7 @@
             </div>
 
             <div class="form-group">
-                <span class="q">2. 您目前缺乏但認為重要的技能是什麼？</span>
+                <span class="q">2. 您目前缺乏但認為重要的技能是什麼？ *</span>
                 <label class="option"><input type="checkbox" name="lack_skills" value="英文溝通能力">英文溝通能力</label>
                 <label class="option"><input type="checkbox" name="lack_skills" value="服務業專業知識">服務業專業知識</label>
                 <label class="option"><input type="checkbox" name="lack_skills" value="跨文化溝通">跨文化溝通</label>
@@ -314,8 +330,8 @@
             </div>
 
             <div class="form-group">
-                <span class="q">3. 馬爾地夫工作對您的意義是什麼？</span>
-                <label class="option"><input type="radio" name="meaning" value="個人成長與挑戰" required>個人成長與挑戰</label>
+                <span class="q">3. 馬爾地夫工作對您的意義是什麼？ *</span>
+                <label class="option"><input type="radio" name="meaning" value="個人成長與挑戰">個人成長與挑戰</label>
                 <label class="option"><input type="radio" name="meaning" value="語言與國際視野提升">語言與國際視野提升</label>
                 <label class="option"><input type="radio" name="meaning" value="累積海外工作經驗">累積海外工作經驗</label>
             </div>
@@ -326,7 +342,7 @@
             <legend>諮詢方向</legend>
 
             <div class="form-group">
-                <span class="q">4. 這次的諮詢希望了解哪些方面？</span>
+                <span class="q">4. 這次的諮詢希望了解哪些方面？ *</span>
                 <label class="option"><input type="checkbox" name="expectations" value="馬爾地夫的職位哪些適合我">馬爾地夫的職位哪些適合我</label>
                 <label class="option"><input type="checkbox" name="expectations" value="馬爾地夫的工作跟生活情形">馬爾地夫的工作跟生活情形</label>
                 <label class="option"><input type="checkbox" name="expectations" value="馬爾地夫工作面試技巧">馬爾地夫工作面試技巧</label>
@@ -334,8 +350,8 @@
             </div>
 
             <div class="form-group">
-                <span class="q">5. 對於馬爾地夫的工作，你已經有興趣的職位嗎？</span>
-                <label class="option"><input type="radio" name="position" value="私人管家" required>私人管家</label>
+                <span class="q">5. 對於馬爾地夫的工作，你已經有興趣的職位嗎？ *</span>
+                <label class="option"><input type="radio" name="position" value="私人管家">私人管家</label>
                 <label class="option"><input type="radio" name="position" value="前台人員">前台人員</label>
                 <label class="option"><input type="radio" name="position" value="保母">保母</label>
                 <label class="option"><input type="radio" name="position" value="餐廳外場人員">餐廳外場人員</label>
@@ -348,15 +364,15 @@
             <legend>行動與心態</legend>
 
             <div class="form-group">
-                <span class="q">6. 如果現在有合適的工作機會，您會？</span>
-                <label class="option"><input type="radio" name="action_plan" value="立刻接受，機票買了就出發" required>立刻接受，機票買了就出發</label>
+                <span class="q">6. 如果現在有合適的工作機會，您會？ *</span>
+                <label class="option"><input type="radio" name="action_plan" value="立刻接受，機票買了就出發">立刻接受，機票買了就出發</label>
                 <label class="option"><input type="radio" name="action_plan" value="需要1-2週考慮，四處打聽一下當地情形">需要1-2週考慮，四處打聽一下當地情形</label>
                 <label class="option"><input type="radio" name="action_plan" value="需要1個月準備，離職或是跟家庭溝通">需要1個月準備，離職或是跟家庭溝通</label>
                 <label class="option"><input type="radio" name="action_plan" value="需要2-3個月準備，還需要職前準備期長一點">需要2-3個月準備，還需要職前準備期長一點</label>
             </div>
 
             <div class="form-group">
-                <span class="q">7. 如果遇到挫折，您會怎麼面對？</span>
+                <span class="q">7. 如果遇到挫折，您會怎麼面對？ *</span>
                 <label class="option"><input type="checkbox" name="frustration" value="堅持到底，找方法解決">堅持到底，找方法解決</label>
                 <label class="option"><input type="checkbox" name="frustration" value="尋求協助後繼續努力">尋求協助後繼續努力</label>
                 <label class="option"><input type="checkbox" name="frustration" value="評估情況再決定">評估情況再決定</label>
@@ -368,7 +384,7 @@
         <fieldset>
             <legend>想對我說的話</legend>
             <div class="form-group">
-                <label class="q" for="comments">8. 還有什麼想告訴我的嗎？任何疑問、期待或想法都可以分享，讓這次的聊聊可以更有效率喔！</label>
+                <label class="q" for="comments">8. 還有什麼想告訴我的嗎？任何疑問、期待或想法都可以分享，讓這次的聊聊可以更有效率喔！（選填）</label>
                 <textarea id="comments" name="comments"></textarea>
             </div>
         </fieldset>
@@ -389,12 +405,96 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzJo5_anAAwFUCkh94DBEQNuY1KvhzeLKvOqbga18lH96iwRvg5bsmbVYKRN8lpKNQP/exec";
 
 const form = document.getElementById('signupForm');
+const emailInput = document.getElementById('email');
+
+// 追蹤事件：第一次點進表單欄位 = form_start（只記一次）
+let formStarted = false;
+form.addEventListener('focusin', function () {
+    if (formStarted) return;
+    formStarted = true;
+    if (typeof gtag === 'function') gtag('event', 'form_start');
+});
+
+// 必填題組（第 8 題為選填，不在清單內）
+const REQUIRED_GROUPS = ['skills', 'lack_skills', 'meaning', 'expectations', 'position', 'action_plan', 'frustration'];
+// 選了「其他」就必須填寫內容的題組
+const OTHER_FIELDS = { skills: 'skills_other', lack_skills: 'lack_skills_other', position: 'position_other' };
+
+// 為每個必填題組加上錯誤提示位置，重新選擇或輸入後自動清除
+REQUIRED_GROUPS.forEach(function (name) {
+    const group = form.querySelector('input[name="' + name + '"]').closest('.form-group');
+    const p = document.createElement('p');
+    p.className = 'field-error';
+    group.appendChild(p);
+    const clear = function () { p.textContent = ''; p.classList.remove('show'); };
+    group.addEventListener('change', clear);
+    group.addEventListener('input', clear);
+});
+
+// 在「其他」旁的文字框輸入內容時，自動勾選該選項
+form.querySelectorAll('.option input[type="text"]').forEach(function (t) {
+    t.addEventListener('input', function () {
+        const box = t.closest('.option').querySelector('input[type="checkbox"], input[type="radio"]');
+        if (t.value.trim()) box.checked = true;
+    });
+});
+
+function validateGroups() {
+    let firstBad = null;
+    REQUIRED_GROUPS.forEach(function (name) {
+        const inputs = Array.from(form.querySelectorAll('input[name="' + name + '"]'));
+        const group = inputs[0].closest('.form-group');
+        const err = group.querySelector('.field-error');
+        const checked = inputs.filter(function (i) { return i.checked; });
+        let msg = '';
+        if (!checked.length) {
+            msg = inputs[0].type === 'radio'
+                ? '此題為必填，請選擇一個選項'
+                : '此題為必填，請至少選擇一個選項';
+        } else if (OTHER_FIELDS[name]
+                   && checked.some(function (i) { return i.value === '其他'; })
+                   && !form.elements[OTHER_FIELDS[name]].value.trim()) {
+            msg = '你選了「其他」，請填寫內容';
+        }
+        err.textContent = msg;
+        err.classList.toggle('show', !!msg);
+        if (msg && !firstBad) firstBad = group;
+    });
+    if (firstBad) firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return !firstBad;
+}
+
+// 信箱格式檢查：用中文提示，修改內容後自動清除錯誤
+emailInput.addEventListener('invalid', function () {
+    emailInput.setCustomValidity(
+        emailInput.validity.valueMissing
+            ? '請填寫聯絡信箱'
+            : '請輸入正確的信箱格式，例如：name@example.com'
+    );
+});
+emailInput.addEventListener('input', function () {
+    emailInput.setCustomValidity('');
+});
 const btn = document.getElementById('submitBtn');
 const errBox = document.getElementById('errMsg');
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
     errBox.textContent = '';
+
+    // 姓名與聯繫方式不可只有空白
+    const nameEl = document.getElementById('name');
+    const contactEl = document.getElementById('contact');
+    if (!nameEl.value.trim() || !contactEl.value.trim()) {
+        errBox.textContent = '姓名與聯繫方式為必填，請填寫完整。';
+        (nameEl.value.trim() ? contactEl : nameEl).focus();
+        return;
+    }
+
+    if (!validateGroups()) {
+        errBox.textContent = '還有必填題目沒有完成，請檢查紅字標示的題目。';
+        return;
+    }
 
     if (SCRIPT_URL.indexOf('http') !== 0) {
         errBox.textContent = '尚未設定 SCRIPT_URL，請先貼上 Apps Script 網址。';
@@ -407,6 +507,7 @@ form.addEventListener('submit', function (e) {
     for (const key of new Set(fd.keys())) {
         data[key] = fd.getAll(key).join('、');
     }
+    data.email = (data.email || '').trim();
 
     btn.disabled = true;
     btn.textContent = '送出中...';
@@ -417,6 +518,7 @@ form.addEventListener('submit', function (e) {
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(data)
     }).then(function () {
+        if (typeof gtag === 'function') gtag('event', 'generate_lead');
         form.style.display = 'none';
         document.querySelector('.intro').style.display = 'none';
         document.getElementById('done').classList.add('show');
